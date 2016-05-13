@@ -1,0 +1,671 @@
+<!doctype html>
+<html>
+<head>
+	<title>PANSS RPE - MedAvante-standard, language-neutral Data Entry Form</title>
+	<meta http-equiv="content-type" content="text/html"/>
+	<meta http-equiv="content-style-type" content="text/css"/>
+
+	<script type="text/javascript" src="http://medavante.vo.llnwd.net/v1/GlobalFiles/RPEwebObjects/MedAvante_PANSS_RPE.js"></script>
+	<script type="text/javascript" src="http://medavante.vo.llnwd.net/v1/GlobalFiles/RPEwebObjects/MedAvante_PANSS_RPE_Variables.js"></script>
+
+	<script type="text/javascript">
+		function htmlStartup() {
+			// Get the rpeNumber
+			var rpeNum = courseObject.courseNumber;
+			if ((rpeNum < 1) || (rpeNum > parent.nRPEs)) {
+				alert("Error: Invalid RPE number.");
+			}
+
+			// Get the language index value
+			idxLang = courseObject.languageIndex;
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		htmlStartup();
+		var userAnswer = new Array(nScaleItems); // Array to hold the user answers
+		var iIdx;	// item index
+	</script>
+	
+	<span style="color: black;">
+		<script type="text/javascript">document.write(parent.scaleIntro[idxLang][1]);</script><br/>
+		<script type="text/javascript">document.write(parent.scaleIntro[idxLang][2]);</script><br/>
+		<script type="text/javascript">document.write(parent.scaleIntro[idxLang][3]);</script><br/><br/>
+	</span>
+	<table border="1" width="100%">
+		<tbody>
+			<tr>
+				<td style="text-align: left; vertical-align: middle; background-color: #cccccc;"
+					rowspan="1" colspan="2">
+					<span style="color: black;"><b><script type="text/javascript">document.write(groupItem[idxLang][1]);</script></b></span>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 1;</script>
+				<td style="text-align: left; width:90%">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center; width:10%">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 2;</script>
+				<td style="text-align: left;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 3;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 4;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 5;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 6;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 7;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: right; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<b><script type="text/javascript">document.write(calcItem[idxLang][1]);</script></b></span>
+				</td>
+				<td id="calc1" style="text-align: center;">--</td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td style="text-align: left; background-color: #cccccc;" rowspan="1" colspan="2">
+					<span style="color: black;"><b><script type="text/javascript">document.write(groupItem[idxLang][2]);</script></b></span>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 8;</script>
+				<td style="text-align: left; width:90%">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center; width:10%">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 9;</script>
+				<td style="text-align: left;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 10;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 11;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 12;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 13;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 14;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+			<td style="text-align: right; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<b><script type="text/javascript">document.write(calcItem[idxLang][2]);</script></b></span>
+			</td>
+				<td id="calc2" style="text-align: center;">--</td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td style="text-align: left; background-color: #cccccc;" rowspan="1" colspan="2">
+					<span style="color: black;"><b><script type="text/javascript">document.write(groupItem[idxLang][3]);</script></b></span>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 15;</script>
+				<td style="text-align: left; width:90%">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center; width:10%">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 16;</script>
+				<td style="text-align: left;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 17;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 18;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 19;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 20;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 21;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 22;</script>
+				<td style="text-align: left; width:90%">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center; width:10%">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 23;</script>
+				<td style="text-align: left;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 24;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 25;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 26;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 27;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 28;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 29;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<script type="text/javascript">iIdx = 30;</script>
+				<td style="text-align: left; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<script type="text/javascript">document.write(scaleItem[idxLang][iIdx]);</script></span>
+				</td>
+				<td style="text-align: center;">
+					<script type="text/javascript">document.write("<select id=ans" + iIdx + " onchange=CheckDataEntry(" + iIdx + ")>")</script>
+						<option value="99"></option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: right; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<b><script type="text/javascript">document.write(calcItem[idxLang][3]);</script></b></span>
+				</td>
+				<td id="calc3" style="text-align: center;">--</td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td style="text-align: right; vertical-align: middle;">
+					<span style="color: black;">&nbsp;&nbsp;<b><script type="text/javascript">document.write(calcItem[idxLang][4]);</script></b></span>
+				</td>
+				<td id="calc4" style="text-align: center;">--</td>
+			</tr>
+			<tr></tr>
+						
+		</tbody>
+	</table>
+	<br/>
+	<form id="test" enctype="application/x-www-form-urlencoded" onsubmit="EvaluateScores(); return false;">
+		<span class="submit">
+			<span class="test">
+				<script type="text/javascript">
+					var x = "<input type='submit' id='submit1' value='" + parent.strSubmitScores[idxLang] + "' />";
+					document.write(x);
+				</script>
+			</span>
+		</span>
+	</form>
+	<script type="text/javascript">
+		// Disable submit button until all values are entered (flipped by CheckDataEntry())
+		document.getElementById("submit1").disabled = true;
+	</script>
+</body>
+</html>

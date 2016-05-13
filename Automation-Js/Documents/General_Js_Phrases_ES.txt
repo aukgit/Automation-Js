@@ -1,0 +1,31 @@
+English Reference	Spanish Referencia
+Please select a value for each item as recorded on the worksheets.	Seleccione un valor para cada elemento según lo registrado en las hojas de trabajo.
+"The “Submit Scores” button, at the bottom of the scale, will not be enabled until a value has been selected for all items."	El botón «Enviar puntuaciones» en la parte inferior de la escala no se activará hasta que se haya seleccionado un valor para todos los elementos.
+Entered values will be lost if you leave this page without selecting the “Submit Scores” button.	Los valores introducidos se perderán si abandona esta página sin seleccionar el botón «Enviar puntuaciones».
+The following items were missed:	Faltan los siguientes elementos:
+Feedback	Comentarios
+Item #	Elemento n.º
+No items missed	No faltan elementos
+Sum-of-Box	Suma del cuadro
+Calculated value of	Valor calculado de
+is out of the allowable range	está fuera del intervalo permitido.
+All items are within the allowable range	Todos los elementos están en el intervalo permitido.
+Name	Nombre
+Standard Score	Puntuación estándar
+Score	Puntuación
+Passing Score	Puntuación para aprobar
+Result	Resultado
+Post-Test	Prueba posterior
+Question	Pregunta
+Criterion	Criterio
+Selected	Seleccionado
+Date	Fecha
+Unable to save report to the local storage	No es posible guardar el informe localmente.
+Report will be displayed instead	"En lugar de eso, se mostrará el informe."
+Please print the report as it will not be saved once the display window is closed	"Imprima el informe, ya que no se guardará una vez cerrada la ventana de visualización."
+"Congratulations, you passed."	"Enhorabuena, ha aprobado."
+You did not pass.	No ha obtenido la calificación necesaria.
+Correct	Correcto
+Incorrect	Incorrecto
+Submit Scores	Enviar puntuaciones
+Submit	Enviar
