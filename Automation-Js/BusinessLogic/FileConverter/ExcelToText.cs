@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using BusinessLogic.Sheets;
@@ -7,12 +6,11 @@ using Microsoft.Office.Interop.Excel;
 
 namespace BusinessLogic.FileConverter {
     public class ExcelToText : IProcess {
-
         //Read the first cell
         //public static string TestString = PanssRpeDataEntryForm.Cells[4, 1].Value.ToString();
         private string GetExcelCellValue(Range cell, string defaultValue = null) {
             if (cell != null) {
-                var value = (string)cell.Value2;
+                var value = (string) cell.Value2;
                 if (!string.IsNullOrEmpty(value)) {
                     value = value.Replace("\n", " ");
                     return value;
@@ -26,7 +24,6 @@ namespace BusinessLogic.FileConverter {
             int rowStarting = 0,
             int[] columnsToVisit = null,
             int[] skipingRows = null) {
-
             var xrange = excelSheet.UsedRange;
             var rowsLength = xrange.Rows.Count;
 
@@ -40,9 +37,9 @@ namespace BusinessLogic.FileConverter {
                     }
                 }
                 if (columnsToVisit != null && columnsToVisit.Length > 0) {
-                    string previousCell = String.Empty;
+                    var previousCell = string.Empty;
                     foreach (var column in columnsToVisit) {
-                        var cell = (Range)xrange.Cells[row + 1, column];
+                        var cell = (Range) xrange.Cells[row + 1, column];
                         var value = GetExcelCellValue(cell);
                         if (value != null) {
                             if (previousCell == string.Empty) {
@@ -57,49 +54,49 @@ namespace BusinessLogic.FileConverter {
                         sb.AppendLine();
                     }
                 }
-            skiploop:
+                skiploop:
                 ;
             }
             return sb;
         }
 
         public void ConvertToTextPanssRpe1GregSheet1() {
-            var sb = GetExcelToText(_panssRpe1GregSheet1, 0, new[] { 2, 3 });
+            var sb = GetExcelToText(_panssRpe1GregSheet1, 0, new[] {2, 3});
             File.WriteAllText(_panssRpe1GregSheet1Path, sb.ToString());
             sb = null;
             GC.Collect();
         }
 
         public void ConvertToTextPanssRpe2LisaSheet1() {
-            var sb = GetExcelToText(_panssRpe2LisaSheet1, 0, new[] { 2, 4 });
+            var sb = GetExcelToText(_panssRpe2LisaSheet1, 0, new[] {2, 4});
             File.WriteAllText(_panssRpe2LisaSheet1Path, sb.ToString());
             sb = null;
             GC.Collect();
         }
 
         public void ConvertToTextPanssRpeDataEntryForm() {
-            var sb = GetExcelToText(_panssRpeDataEntryForm, 0, new[] { 1, 2 });
+            var sb = GetExcelToText(_panssRpeDataEntryForm, 0, new[] {1, 2});
             File.WriteAllText(_panssRpeDataEntryFormPath, sb.ToString());
             sb = null;
             GC.Collect();
         }
 
         public void ConvertToTextPanssRpe1GregSheet2() {
-            var sb = GetExcelToText(_panssRpe1GregSheet2, 0, new[] { 2, 3 });
+            var sb = GetExcelToText(_panssRpe1GregSheet2, 0, new[] {2, 3});
             File.WriteAllText(_panssRpe1GregSheet2Path, sb.ToString());
             sb = null;
             GC.Collect();
         }
 
         public void ConvertToTextPanssRpe2LisaSheet2() {
-            var sb = GetExcelToText(_panssRpe2LisaSheet2, 0, new[] { 2, 3 });
+            var sb = GetExcelToText(_panssRpe2LisaSheet2, 0, new[] {2, 3});
             File.WriteAllText(_panssRpe2LisaSheet2Path, sb.ToString());
             sb = null;
             GC.Collect();
         }
 
         public void ConvertToTextGeneralJsPhrases() {
-            var sb = GetExcelToText(_generalJsPhrases, 0, new[] { 1, 2 });
+            var sb = GetExcelToText(_generalJsPhrases, 0, new[] {1, 2});
             File.WriteAllText(_generalJsPhrasesPath, sb.ToString());
             sb = null;
             GC.Collect();
@@ -114,13 +111,12 @@ namespace BusinessLogic.FileConverter {
 
         #region Declarations
 
-        private string _workingPath = App.Path + @"\Convert\New\";
+        private readonly string _workingPath = App.Path + @"\Convert\New\";
 
-        private string _excelSheet1Path;
-        private string _excelSheet2Path;
+        private readonly string _excelSheet1Path;
+        private readonly string _excelSheet2Path;
 
         private Application _excel;
-
 
         private Workbook _excelWorkBook1;
         private Workbook _excelWorkBook2;
@@ -132,22 +128,21 @@ namespace BusinessLogic.FileConverter {
         private Worksheet _panssRpe2LisaSheet2;
         private Worksheet _generalJsPhrases;
 
-
-        private string _panssRpe1GregSheet1Path;
-        private string _panssRpe1GregSheet2Path;
-        private string _panssRpe2LisaSheet1Path;
-        private string _panssRpe2LisaSheet2Path;
-        private string _panssRpeDataEntryFormPath;
-        private string _generalJsPhrasesPath;
+        private readonly string _panssRpe1GregSheet1Path;
+        private readonly string _panssRpe1GregSheet2Path;
+        private readonly string _panssRpe2LisaSheet1Path;
+        private readonly string _panssRpe2LisaSheet2Path;
+        private readonly string _panssRpeDataEntryFormPath;
+        private readonly string _generalJsPhrasesPath;
 
         private string _language;
-
 
         #endregion
 
         #region Constructors
+
         public ExcelToText(string language) {
-            this._language = language;
+            _language = language;
             _workingPath += language + "\\";
             _excel = new Application();
             _excelSheet1Path = _workingPath + @"\Questions and Rationale Translations.xlsx";
@@ -179,11 +174,11 @@ namespace BusinessLogic.FileConverter {
             GC.Collect();
         }
 
-        public ExcelToText(SheetBase sheetBase) : this(sheetBase.Language) { }
+        public ExcelToText(SheetBase sheetBase) : this(sheetBase.Language) {}
+
         #endregion
 
         #region IProcess Members
-
 
         public void BeforeProcess() {
             Console.WriteLine("- * Start processing : " + GetType().Name);
@@ -197,16 +192,16 @@ namespace BusinessLogic.FileConverter {
             BeforeProcess();
 
             OpenExcelSheets();
-            
+
             ConvertToTextPanssRpe1GregSheet1();
             ConvertToTextPanssRpe1GregSheet2();
             ConvertToTextPanssRpe2LisaSheet1();
             ConvertToTextPanssRpe2LisaSheet2();
             ConvertToTextPanssRpeDataEntryForm();
             ConvertToTextGeneralJsPhrases();
-            
+
             CloseExcelSheets();
-            
+
             AfterProcess();
         }
 

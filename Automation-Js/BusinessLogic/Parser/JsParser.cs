@@ -120,6 +120,36 @@ namespace BusinessLogic.Parser {
         }
 
         /// <summary>
+        ///     Add or modify JavaScript variable based on matched values from excel and text file.
+        /// </summary>
+        /// <param name="variableName">Pass variable like "_var" if the whole is "_var[%lan][%i]"</param>
+        /// <param name="variableArrayTemplate">Pass variable like "[%lan][%i]" if the whole is "_var[%lan][%i]"</param>
+        /// <param name="translations"></param>
+        /// <param name="index2Limit"></param>
+        /// <param name="dimension">It should be 1 or 2.</param>
+        /// <param name="index1Limit"></param>
+        public bool AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int [] translationProcessingIndex) {
+            // pass "_var[%lan][%i][%j]" and get "_var[ES][1][5]"
+            var templatedVariableName = variableName + variableArrayTemplate; // "_var[%lan][%i]"
+            var templatedVariableForNewLanguage = templatedVariableName.Replace("%lan", Language);
+            if (dimension == 1) {
+                for (int i = 1; i <= index1Limit; i++) {
+                    var exactVariableForNewLanguage = TranslateTemplatedVariableNameToExact(templatedVariableForNewLanguage, index1Limit);
+                    if (exactVariableForNewLanguage != null) {
+                        var variableLineNumber = GetExactVariableLineNumberInJs(exactVariableForNewLanguage);
+                        return JsInsertNewLineAt(variableName, exactVariableForNewLanguage, newLanguageValue, variableLineNumber);
+                    }
+                }
+            }
+            var newLanguageExactVariableName = GetExactVariableNameForNewLanguage(templatedVariableName, engString, dimension, maxloopingUpperLimit);
+            if (newLanguageExactVariableName != null) {
+                var variableLineNumber = GetExactVariableLineNumberInJs(newLanguageExactVariableName);
+                return JsInsertNewLineAt(variableName, newLanguageExactVariableName, newLanguageValue, variableLineNumber);
+            }
+            return false;
+        }
+
+        /// <summary>
         /// </summary>
         /// <param name="newExactVariableWithoutSquare">
         ///     Pass "_var" from "_var[EN][%i][%j]".
@@ -362,13 +392,16 @@ namespace BusinessLogic.Parser {
             var convertForRegularExpression = GetRegularExpressionForFindingExactVariable(exactVariableName);
             for (var i = 0; i < JsLines.Count; i++) {
                 var line = JsLines[i];
-                var match = Regex.Match(line, convertForRegularExpression);
-                if (match.Success) {
-                    var jsValue = match.Groups[2].Value;
-                    jsValue = jsValue.Trim();
-                    jsValue = jsValue.Replace("\"", "");
-                    jsValue = jsValue.Replace(";", "");
-                    return jsValue;
+                line = line.Trim();
+                if (line.StartsWith(exactVariableName)) {
+                    var match = Regex.Match(line, convertForRegularExpression);
+                    if (match.Success) {
+                        var jsValue = match.Groups[2].Value;
+                        jsValue = jsValue.Trim();
+                        jsValue = jsValue.Replace("\"", "");
+                        jsValue = jsValue.Replace(";", "");
+                        return jsValue;
+                    }
                 }
             }
             return null;
