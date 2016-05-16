@@ -127,7 +127,7 @@ namespace BusinessLogic.Parser {
         /// <param name="translations"></param>
         /// <param name="translationProcessingRange"> Pass a range which index will be translated</param> 
         /// <param name="arrayIndexStarting"> Starting array index from which array index will be started</param>
-        public void AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int[] translationProcessingRange,int arrayIndexStarting ) {
+        public void AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int[] translationProcessingRange, int arrayIndexStarting) {
             // pass "_var[%lan][%i][%j]" and get "_var[ES][1][5]"
             var templatedVariableName = variableName + variableArrayTemplate; // "_var[%lan][%i]"
             //_var[ES][%i]
@@ -139,8 +139,31 @@ namespace BusinessLogic.Parser {
                 var variableLineNumber = GetExactVariableLineNumberInJs(newLanguageExactVariableName);
                 JsInsertNewLineAt(variableName, newLanguageExactVariableName, translation.NewLanguage, variableLineNumber);
             }
-            
-            
+
+
+        }
+
+        /// <summary>
+        ///     Add or modify JavaScript variable based on matched values from excel and text file.
+        /// </summary>
+        /// <param name="variableName">Pass variable like "_var" if the whole is "_var[%lan][%i]"</param>
+        /// <param name="variableArrayTemplate">Pass variable like "[%lan][%i]" if the whole is "_var[%lan][%i]"</param>
+        /// <param name="translations"></param>
+        /// <param name="translationProcessingRange"> Pass a range which index will be translated</param> 
+        /// <param name="arrayIndexStarting"> Starting array index from which array index will be started</param>
+        /// <param name="translationProcessingIndex">Single processing index</param>
+        /// <param name="arrayIndex">ArrayIndex</param>
+        public void AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int translationProcessingIndex, int arrayIndex) {
+            // pass "_var[%lan][%i][%j]" and get "_var[ES][1][5]"
+            var templatedVariableName = variableName + variableArrayTemplate; // "_var[%lan][%i]"
+            //_var[ES][%i]
+            var templatedVariableForNewLanguage = templatedVariableName.Replace("%lan", Language);
+
+            var translation = translations[translationProcessingIndex];
+            var newLanguageExactVariableName = TranslateTemplatedVariableNameToExact(templatedVariableForNewLanguage, arrayIndex);
+            var variableLineNumber = GetExactVariableLineNumberInJs(newLanguageExactVariableName);
+            JsInsertNewLineAt(variableName, newLanguageExactVariableName, translation.NewLanguage, variableLineNumber);
+
         }
 
         /// <summary>
