@@ -25,13 +25,15 @@ namespace BusinessLogic.Sheets {
 
             string variableName = "incorrectFeedback",
                    formatArray = "[2][%lan][%i]";
-            foreach (var translate in txtParser.Translations) {
-                jsParser.AppendNewLanguage(variableName, formatArray, translate.English, translate.NewLanguage, 1, loopRunningLimit);
-            }
+            jsParser.AppendNewLanguageInRange(variableName, formatArray, txtParser.Translations, new[] { 1, 30 }, 1);
+
+            //foreach (var translate in txtParser.Translations) {
+            //    jsParser.AppendNewLanguage(variableName, formatArray, translate.English, translate.NewLanguage, 1, loopRunningLimit);
+            //}
 
             jsParser.SaveJs();
-            var errors = jsParser.ErrorCollector;
-            App.Logger.WriteLog(errors);
+            //var errors = jsParser.ErrorCollector;
+            //App.Logger.WriteLog(errors);
 
             AfterProcess();
         }

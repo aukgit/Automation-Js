@@ -1,4 +1,6 @@
-﻿using BusinessLogic.Parser;
+﻿using System.Collections.Generic;
+using BusinessLogic.Entity;
+using BusinessLogic.Parser;
 using BusinessLogic.Enum;
 namespace BusinessLogic.Sheets {
     /// <summary>
@@ -25,13 +27,15 @@ namespace BusinessLogic.Sheets {
 
             string variableName = "incorrectFeedback",
                    formatArray = "[1][%lan][%i]";
-            foreach (var translate in txtParser.Translations) {
-                jsParser.AppendNewLanguage(variableName, formatArray, translate.English, translate.NewLanguage, 1, loopRunningLimit);
-            }
+            
+            //foreach (var translate in txtParser.Translations) {
+                //jsParser.AppendNewLanguage(variableName, formatArray, translate.English, translate.NewLanguage, 1, loopRunningLimit);
+            jsParser.AppendNewLanguageInRange(variableName, formatArray, txtParser.Translations,new []{1,30},1);
+            //}
 
             jsParser.SaveJs();
-            var errors = jsParser.ErrorCollector;
-            App.Logger.WriteLog(errors);
+            //var errors = jsParser.ErrorCollector;
+            //App.Logger.WriteLog(errors);
 
             AfterProcess();
         }

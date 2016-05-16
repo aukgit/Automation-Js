@@ -40,8 +40,8 @@ namespace BusinessLogic.Sheets {
             jsParser.RemoveUnExpectedLineGaps(new [] {"scaleItem", "rptItem", "groupItem", "calcItem"}, "[%lan]");
 
             jsParser.SaveJs();
-            var errors = jsParser.ErrorCollector;
-            App.Logger.WriteLog(errors);
+            //var errors = jsParser.ErrorCollector;
+            //App.Logger.WriteLog(errors);
 
             AfterProcess();
         }
