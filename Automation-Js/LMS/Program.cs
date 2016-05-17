@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using BusinessLogic;
 using BusinessLogic.FileConverter;
 using BusinessLogic.Sheets;
@@ -20,8 +21,16 @@ namespace LMS {
                 listOfProcess.Add(new GeneralJsPhrases(language));
             }
 
-            foreach (var singleProcess in listOfProcess) {
+            for (int i = 0; i < listOfProcess.Count; i++) {
+                var singleProcess = listOfProcess[i];
                 singleProcess.Process();
+                listOfProcess[i] = null;
+                singleProcess = null;
+            }
+            listOfProcess = null;
+            GC.Collect();
+            foreach (var language in languages) {
+                App.MoveConvertedLanguageFolder(language);
             }
 
             Console.WriteLine("- * Application End.");

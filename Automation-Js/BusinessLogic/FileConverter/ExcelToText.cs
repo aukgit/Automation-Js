@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using BusinessLogic.Sheets;
 using Microsoft.Office.Interop.Excel;
 
 namespace BusinessLogic.FileConverter {
-    public class ExcelToText : IProcess {
+    public class ExcelToText : IProcess,IDisposable {
         //Read the first cell
         //public static string TestString = PanssRpeDataEntryForm.Cells[4, 1].Value.ToString();
         private string GetExcelCellValue(Range cell, string defaultValue = null) {
@@ -169,8 +170,20 @@ namespace BusinessLogic.FileConverter {
         private void CloseExcelSheets() {
             _excelWorkBook1.Close();
             _excelWorkBook2.Close();
-            _excel.Workbooks.Close();
+            foreach (Workbook _workbook in _excel.Workbooks) {
+                _workbook.Close(0);
+            }
+
+            _excel.Quit();
             _excel = null;
+            var process = System.Diagnostics.Process.GetProcessesByName("Excel");
+            foreach (var p in process) {
+                if (!string.IsNullOrEmpty(p.ProcessName)) {
+                    try {
+                        p.Kill();
+                    } catch { }
+                }
+            }
             GC.Collect();
         }
 
@@ -203,6 +216,18 @@ namespace BusinessLogic.FileConverter {
             CloseExcelSheets();
 
             AfterProcess();
+        }
+
+        #endregion
+
+        #region Implementation of IDisposable
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose() {
+
+            CloseExcelSheets();
         }
 
         #endregion

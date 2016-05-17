@@ -38,7 +38,7 @@ namespace BusinessLogic {
         /// </returns>
         public static string[] GetNewConvertingLanguagesList() {
             var path = Path + @"\Convert\New\";
-            return Directory.GetDirectories(path).Select(n=> n.Replace(path, "")).ToArray();
+            return Directory.GetDirectories(path).Select(n => n.Replace(path, "")).ToArray();
         }
         /// <summary>
         ///     It should return JavaScript file path
@@ -54,6 +54,11 @@ namespace BusinessLogic {
             return GetJsFilePath(jsFileType, textParser.TransformingLanguage);
         }
 
+        public static void MoveConvertedLanguageFolder(string language) {
+            var path = Path + @"\Convert\New\" + language;
+            var newPath = Path + @"\Convert\" + language;
+            Directory.Move(path, newPath);
+        }
 
         /// <summary>
         ///     It should return JavaScript file path
@@ -62,7 +67,7 @@ namespace BusinessLogic {
             //if (jsFileType == JsFileNamesEnum.MedAvantePanssRpe) {
             //    return 
             //}
-            var path = Path + @"\Convert\New\" + language + @"\";
+            var path = Path + @"\JsFiles\";
             if (jsFileType == JsFileNamesEnum.MedavanteTranslatedTerms) {
                 path += "medavante_translated_terms.js";
                 return path;

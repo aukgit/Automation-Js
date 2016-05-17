@@ -476,7 +476,6 @@ namespace BusinessLogic.Parser {
         public void SaveJs() {
             try {
                 File.WriteAllLines(JsFilePath, JsLines);
-                //Directory.Move(JsFilePath,App.Path);
             } catch (Exception ex) {
                 throw ex;
             }
