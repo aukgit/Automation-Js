@@ -51,9 +51,10 @@ namespace BusinessLogic.Sheets {
                 jsParser.AppendNewLanguageInRange("groupItem", formatArray, txtParser.Translations, 10, 2);
                 jsParser.AppendNewLanguageInRange("groupItem", formatArray, txtParser.Translations, 19, 3);
             // calcItem{9,18,36,37}
-                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 1, 1);
-                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 10, 2);
-                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 19, 3);
+                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 9, 1);
+                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 18, 2);
+                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 36, 3);
+                jsParser.AppendNewLanguageInRange("calcItem", formatArray, txtParser.Translations, 37, 4);
                 
             
 

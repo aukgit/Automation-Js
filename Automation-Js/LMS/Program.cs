@@ -14,9 +14,10 @@ namespace LMS {
             var languages = App.GetNewConvertingLanguagesList();
             foreach (var language in languages) {
                 listOfProcess.Add(new ExcelToText(language));
-                //listOfProcess.Add(new PanssRpe1GregSheet1(language));
-                //listOfProcess.Add(new PanssRpe1GregSheet2(language));
-                //listOfProcess.Add(new PanssRpe2LisaSheet1(language));
+                listOfProcess.Add(new PanssRpe1GregSheet1(language));
+                listOfProcess.Add(new PanssRpe2LisaSheet1(language));
+                listOfProcess.Add(new PanssRpe1GregSheet2(language));
+                //listOfProcess.Add(new GeneralJsPhrases(language));
             }
 
             foreach (var singleProcess in listOfProcess) {

@@ -58,6 +58,7 @@
     <Compile Include="Parser\JsParser.cs" />
     <Compile Include="Entity\LanguageItem.cs" />
     <Compile Include="Enum\ParserFileNamesEnum.cs" />
+    <Compile Include="Sheets\GeneralJsPhrases.cs" />
     <Compile Include="Sheets\PanssRpe1GregSheet1.cs" />
     <Compile Include="Sheets\PanssRpe1GregSheet2.cs" />
     <Compile Include="Sheets\PanssRpe2LisaSheet1.cs" />
