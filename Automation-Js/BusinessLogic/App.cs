@@ -119,7 +119,7 @@ namespace BusinessLogic {
                 return path;
             }
             if (parserFileNameEnum == ParserFileNamesEnum.GeneralJsPhrases) {
-                path += "GeneralJsPhrases.txt";
+                path += "PanssGeneralJsPhrases.txt";
                 return path;
             }
             return null;
