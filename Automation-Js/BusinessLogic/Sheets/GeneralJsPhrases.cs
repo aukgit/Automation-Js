@@ -47,7 +47,7 @@ namespace BusinessLogic.Sheets {
             int index = 4;
             //4-21
             foreach (var variableName in variableNamesMiddle) {
-                jsParser.AppendNewLanguageInRange(variableName, formatArray2, txtParser.Translations,index, 1);
+                jsParser.AppendNewLanguageInRange(variableName, formatArray2, txtParser.Translations,index, 1,false);
                 index++;
             }
             //22-24
@@ -55,7 +55,7 @@ namespace BusinessLogic.Sheets {
             //25-30
             index = 25;
             foreach (var variableName in variableNamesEnd) {
-                jsParser.AppendNewLanguageInRange(variableName, formatArray2, txtParser.Translations,index, 1);
+                jsParser.AppendNewLanguageInRange(variableName, formatArray2, txtParser.Translations,index, 1,false);
                 index++;
             }
 

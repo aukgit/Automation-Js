@@ -153,7 +153,8 @@ namespace BusinessLogic.Parser {
         /// <param name="arrayIndexStarting"> Starting array index from which array index will be started</param>
         /// <param name="translationProcessingIndex">Single processing index</param>
         /// <param name="arrayIndex">ArrayIndex</param>
-        public void AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int translationProcessingIndex, int arrayIndex) {
+        /// <param name="addGaps">Add two lines of gap</param>
+        public void AppendNewLanguageInRange(string variableName, string variableArrayTemplate, List<LanguageItem> translations, int translationProcessingIndex, int arrayIndex,bool addGaps=true) {
             // pass "_var[%lan][%i][%j]" and get "_var[ES][1][5]"
             var templatedVariableName = variableName + variableArrayTemplate; // "_var[%lan][%i]"
             //_var[ES][%i]
@@ -162,7 +163,7 @@ namespace BusinessLogic.Parser {
             var translation = translations[translationProcessingIndex];
             var newLanguageExactVariableName = TranslateTemplatedVariableNameToExact(templatedVariableForNewLanguage, arrayIndex);
             var variableLineNumber = GetExactVariableLineNumberInJs(newLanguageExactVariableName);
-            JsInsertNewLineAt(variableName, newLanguageExactVariableName, translation.NewLanguage, variableLineNumber);
+            JsInsertNewLineAt(variableName, newLanguageExactVariableName, translation.NewLanguage, variableLineNumber,addGaps);
 
         }
 
@@ -176,18 +177,19 @@ namespace BusinessLogic.Parser {
         ///     Pass "_var[NewLan][%i][%j]".
         /// </param>
         /// <param name="languageValue"></param>
+        /// <param name="addGaps">AddGaps Add two lines of gaps</param>
         /// <param name="modifyingLineNumber">
         ///     If this one is passed then that line code will be modified. Should only be used when
         ///     variable already exist in the js file.
         /// </param>
         /// <returns>Return true if js line is appended.</returns>
-        private bool JsInsertNewLineAt(string newExactVariableWithoutSquare, string newExactLanguageVariableName, string languageValue, int modifyingLineNumber = -1) {
+        private bool JsInsertNewLineAt(string newExactVariableWithoutSquare, string newExactLanguageVariableName, string languageValue, int modifyingLineNumber = -1, bool addGaps = true) {
             var jsNewLine = string.Format("{0} = \"{1}\";", newExactLanguageVariableName, languageValue);
             if (modifyingLineNumber > -1) {
                 JsLines[modifyingLineNumber] = jsNewLine;
                 return true;
             }
-            var newLine = GetNewJsLine(newExactVariableWithoutSquare);
+            var newLine = GetNewJsLine(newExactVariableWithoutSquare,addGaps);
             if (newLine > -1) {
                 JsLines.Insert(newLine++, jsNewLine);
                 _jsLastAppendedLineNumber = newLine;
@@ -287,11 +289,12 @@ namespace BusinessLogic.Parser {
         ///     Note : if not variable not found then returns -1.
         /// </summary>
         /// <param name="newExactVariableWithoutSquare">If exact variable name is "_var[EN][1][5]" then pass "_var"</param>
+        /// <param name="addGaps">Add two lines of gaps </param>
         /// <returns>
         ///     Returns an integer value where the new line number language should be appended in js, if not found then
         ///     returns -1.
         /// </returns>
-        private int GetNewJsLine(string newExactVariableWithoutSquare) {
+        private int GetNewJsLine(string newExactVariableWithoutSquare,bool addGaps =true) {
             if (_jsLastAppendedLineNumber == -1 || (_lastProcessedVariable != newExactVariableWithoutSquare)) {
                 var lastFound = -1;
                 for (var i = 0; i < JsLines.Count; i++) {
@@ -301,8 +304,10 @@ namespace BusinessLogic.Parser {
                     }
                 }
                 if (lastFound > -1) {
-                    JsLines.Insert(++lastFound, "");
-                    JsLines.Insert(++lastFound, "");
+                    if (addGaps) {
+                        JsLines.Insert(++lastFound, "");
+                        JsLines.Insert(++lastFound, "");
+                    }
                     ++lastFound;
                     _jsLastAppendedLineNumber = lastFound;
                     _lastProcessedVariable = newExactVariableWithoutSquare;
@@ -471,6 +476,7 @@ namespace BusinessLogic.Parser {
         public void SaveJs() {
             try {
                 File.WriteAllLines(JsFilePath, JsLines);
+                //Directory.Move(JsFilePath,App.Path);
             } catch (Exception ex) {
                 throw ex;
             }
