@@ -21,6 +21,7 @@ namespace BusinessLogic.Parser {
         ///     maxloopingUpperLimit = -1 means use the default limit 50 or else this as a js array limit
         /// </param>
         /// <param name="processingRanges">Range to only process translations : {"5-10","13-15", "14-12"}</param>
+        
         public void AppendNewLanguage(
             string[] variableNames,
             string variableArrayTemplate,
@@ -298,7 +299,7 @@ namespace BusinessLogic.Parser {
             if (_jsLastAppendedLineNumber == -1 || (_lastProcessedVariable != newExactVariableWithoutSquare)) {
                 var lastFound = -1;
                 for (var i = 0; i < JsLines.Count; i++) {
-                    var line = JsLines[i].Trim();
+                    var line = JsLines[i];
                     if (line.StartsWith(newExactVariableWithoutSquare)) {
                         lastFound = i;
                     }
@@ -375,6 +376,12 @@ namespace BusinessLogic.Parser {
             _jsLastAppendedLineNumber = -1;
         }
 
+        private void DoTrimOfJsFiles() {
+            for (var i = 0; i < JsLines.Count; i++) {
+                JsLines[i] = JsLines[i].Trim();
+            }
+        }
+
         #region Constructor
 
         public JsParser(string filePath, string txtFilePathForErrorCollector, SheetBase sheetBase)
@@ -391,6 +398,7 @@ namespace BusinessLogic.Parser {
             Language = lang;
             ReadJs();
             ErrorCollector = new ErrorCollector(txtFilePathForErrorCollector, JsFilePath, 80);
+            DoTrimOfJsFiles();
         }
 
         #endregion
@@ -414,7 +422,7 @@ namespace BusinessLogic.Parser {
             var convertForRegularExpression = GetRegularExpressionForFindingExactVariable(exactVariableName);
             for (var i = 0; i < JsLines.Count; i++) {
                 var line = JsLines[i];
-                line = line.Trim();
+                //line = line.Trim();
                 if (line.StartsWith(exactVariableName)) {
                     var match = Regex.Match(line, convertForRegularExpression);
                     if (match.Success) {
